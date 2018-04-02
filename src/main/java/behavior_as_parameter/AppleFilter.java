@@ -15,4 +15,15 @@ public class AppleFilter {
 
         return filteredApple;
     }
+
+    public static List<Apple> NewFilter(List<Apple> apples, ApplePredicate predicate){
+        ArrayList<Apple> filteredApple = new ArrayList<>();
+        for(Apple apple : apples){
+            if(predicate.test(apple)){
+                filteredApple.add(apple);
+            }
+        }
+
+        return filteredApple;
+    }
 }
