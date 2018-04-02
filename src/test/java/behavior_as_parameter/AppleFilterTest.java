@@ -60,4 +60,49 @@ public class AppleFilterTest {
 
         assertEquals(1, filterApples.size());
     }
+
+
+    @Test
+    public void newFilterWithColorByAnonymousClass(){
+        Apple apple = new Apple();
+        apple.setColor("red");
+        Apple apple2 = new Apple();
+        apple2.setColor("green");
+        List<Apple> apples = Arrays.asList(apple, apple2);
+        List<Apple> red = AppleFilter.NewFilter(apples, new ApplePredicate(){
+            @Override
+            public boolean test(Apple apple) {
+                if(apple.getColor() == "red"){
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+
+        assertEquals(1, red.size());
+    }
+
+    @Test
+    public void newFilterWithWeightByAnonymousClass(){
+        Apple apple = new Apple();
+        apple.setColor("red");
+        apple.setWeight(100);
+        Apple apple2 = new Apple();
+        apple2.setColor("green");
+        apple2.setWeight(30);
+        List<Apple> apples = Arrays.asList(apple, apple2);
+        List<Apple> filterApples = AppleFilter.NewFilter(apples, new ApplePredicate(){
+            @Override
+            public boolean test(Apple apple) {
+                if(apple.getWeight() > 50){
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+
+        assertEquals(1, filterApples.size());
+    }
 }
