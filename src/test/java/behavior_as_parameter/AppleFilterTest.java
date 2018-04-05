@@ -120,7 +120,6 @@ public class AppleFilterTest {
                 return false;
             }
         });
-
         assertEquals(1, red.size());
     }
 
